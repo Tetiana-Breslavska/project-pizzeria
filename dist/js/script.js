@@ -76,12 +76,14 @@
       /* add element to menu*/ 
       menuContainer.appendChild(thisProduct.element);
     }
+
     initAccordion(){
       const thisProduct = this;
+      console.log(thisProduct);
       
-      /* find the clickable trigger (the element that should react to clicking) */
-      const clickableTrigger = select.menuProduct.clickable;
-      // console.log(clickableTrigger);
+      /* find the clickable trigger (the element that should react to clicking) ??????????????????????*/
+      const clickableTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
+      console.log(clickableTrigger);
       /* START: add event listener to clickable trigger on event click */
       clickableTrigger.addEventListener('click', function(event) {
         /* prevent default action for event */
@@ -89,7 +91,7 @@
 
         /* find active product (product that has active class) */
         const activeProduct = document.querySelector(select.all.menuProductsActive);
-        if (activeProduct != thisProduct.element && activeProduct !== null) {
+        if (activeProduct !== thisProduct.element && activeProduct !== null) {
           /* if there is active product and it's not thisProduct.element, remove class active from it */
           activeProduct.classList.remove(classNames.menuProduct.wrapperActive);
             
