@@ -88,7 +88,8 @@
       thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
       thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
-      console.log(thisProduct.form);
+      thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
+      console.log(thisProduct.imageWrapper);
     }
 
     initAccordion(){
@@ -154,33 +155,40 @@
           // determine option value, e.g. optionId = 'olives', option = { label: 'Olives', price: 2, default: true }
           const option = param.options[optionId];
           console.log(optionId, option);
+          // select an element with the appropriate class
+          const optionImage = thisProduct.imageWrapper.querySelector(`.${paramId}-${optionId}`);
+         
           // check if there is param with a name of paramId in formData and if it includes optionId
           if (formData[paramId] && formData[paramId].includes(optionId))
           {
+            // if image IS
+            if (optionImage) {
+              // add class active to image-element
+              optionImage.classList.add(classNames.menuProduct.imageVisible);
+            }
             // check if the option is not default
             if (!option.default) {
               // add option price to price variable
-              console.log('+++++++++++++');
               price += option.price;
             }
           }
+          
           else {
+            if (optionImage) {
+              optionImage.classList.remove(classNames.menuProduct.imageVisible);
+            }
             // check if the option is default
             if (option.default) {
-              // reduce price variable
-              console.log('----------------');
+            // reduce price variable
               price -= option.price;
             }
-          }
+          } 
         }
       }
       // update calculated price in the HTML
       thisProduct.priceElem.innerHTML = price;
     }
   }
-
-
-
   
   const app = {
     initMenu: function () {
