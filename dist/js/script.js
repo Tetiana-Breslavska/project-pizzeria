@@ -72,6 +72,7 @@
       thisProduct.initOrderForm();
       thisProduct.initAmountWidget();
       thisProduct.processOrder();
+      // thisProduct.addToCart();   чому це тут  не треба?
       thisProduct.element;
       console.log('new Product:', thisProduct);
       console.log(thisProduct.element);
@@ -206,6 +207,8 @@
         }
       }
       //multiply price by amount
+      thisProduct.priceSingle = price;
+      console.log(thisProduct.priceSingle);
       price *= thisProduct.amountWidget.value;
       // update calculated price in the HTML
       thisProduct.priceElem.innerHTML = price;
@@ -213,8 +216,30 @@
 
     addToCart() {
       const thisProduct = this;
-      app.cart.add(thisProduct);
+      console.log(thisProduct);
+      app.cart.add(thisProduct.readyCartProduct());
+      
     }
+
+    readyCartProduct() {
+      const thisProduct = this;
+      console.log(thisProduct);
+      console.log(thisProduct.priceSingle);
+      const productSummary = {
+        'id': thisProduct.id,
+        'name': thisProduct.data.name,
+        'amount': thisProduct.amountWidget.value,
+        'priceSingle': thisProduct.priceSingle,
+        'price': thisProduct.priceSingle * thisProduct.amountWidget.value,
+        'params':{}
+      };
+      
+      console.log(productSummary);
+      return productSummary;
+
+    }
+
+    
   }
 
   class AmountWidget{
@@ -273,6 +298,7 @@
       thisCart.products - [];
       thisCart.getElements(element);
       thisCart.initActions();
+      // thisCart.add(menuProduct);   чому це тутне треба?
       console.log('new Cart', thisCart);
 
     }
@@ -296,7 +322,8 @@
     }
 
     add(menuProduct) {
-      //const thisCard = this;
+      const thisCard = this;
+      console.log(thisCard);
       console.log('adding product', menuProduct);
     }
   }
