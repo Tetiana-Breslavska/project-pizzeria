@@ -391,11 +391,32 @@
       });
 
       thisCart.dom.productList.addEventListener('remove', function () {
-        thisCart.remove();
+        thisCart.remove(event.detail.cartProduct);
       });
       
       
     }
+
+    remove(cartProduct){
+      const thisCart = this;
+      console.log('remove', cartProduct);
+      console.log(thisCart);
+      console.log(thisCart.products);
+
+      for (let product of thisCart.products) {
+        
+        if (product === cartProduct) {
+          const index = thisCart.products.indexOf(product);
+          console.log(index);
+          thisCart.products.splice(index, 1);
+
+        }
+      }
+      thisCart.update();
+      console.log(cartProduct.dom.wrapper);
+      cartProduct.dom.wrapper.remove();
+    }
+
 
     add(menuProduct) {
       const thisCart = this;
@@ -417,27 +438,24 @@
     update(){
       const thisCart = this;
 
-      const deliveryFee = settings.cart.defaultDeliveryFee;
+      let deliveryFee = 0;
       let totalNumber = 0;
       let subtotalPrice = 0;
-      // thisCart.totalPrice = 0;
+      thisCart.totalPrice = 0;
 
       for(let product of thisCart.products){
         totalNumber += product.amount;
         subtotalPrice += product.price;
       }
-
-     
-
-      if (totalNumber != 0){
+      if (totalNumber != 0) {
+        deliveryFee = settings.cart.defaultDeliveryFee;
         thisCart.totalPrice = subtotalPrice + deliveryFee;
-        thisCart.dom.deliveryFee.innerHTML = deliveryFee;
       }
-
       thisCart.dom.totalNumber.innerHTML = totalNumber;
       thisCart.dom.subtotalPrice.innerHTML = subtotalPrice;
       thisCart.dom.totalPrice.innerHTML = thisCart.totalPrice;
       thisCart.dom.totalPriceTitle.innerHTML = thisCart.totalPrice;
+      thisCart.dom.deliveryFee.innerHTML = deliveryFee;
       console.log('Total Price', thisCart.totalPrice);
       console.log(totalNumber);
     }
@@ -501,7 +519,7 @@
       const thisCartProduct = this;
       const event = new CustomEvent('remove', {
         bubbles: true,
-        detail: { catrProdact: thisCartProduct, },
+        detail: { cartProduct: thisCartProduct, },
       });
       thisCartProduct.dom.wrapper.dispatchEvent(event);
       console.log('remove');
@@ -511,7 +529,6 @@
       const thisCartProduct = this;
       thisCartProduct.dom.edit.addEventListener('click', function (event) {
         event.preventDefault();
-             
       });
       thisCartProduct.dom.remove.addEventListener('click', function (event) {
         event.preventDefault();
