@@ -64,6 +64,7 @@
     // CODE ADDED START
     cart: {
       wrapperActive: 'active',
+      illusion:'cart_illusion',
     },
     // CODE ADDED END
   };
@@ -399,6 +400,7 @@
           console.log(index);
           thisCart.products.splice(index, 1);
         }
+        
       }
       thisCart.update();
       console.log(cartProduct.dom.wrapper);
@@ -439,6 +441,19 @@
       thisCart.dom.totalPrice.innerHTML = thisCart.totalPrice;
       thisCart.dom.totalPriceTitle.innerHTML = thisCart.totalPrice;
       thisCart.dom.deliveryFee.innerHTML = deliveryFee;
+      thisCart.dom.totalNumber.classList.add(classNames.cart.illusion);
+      setTimeout(function() {
+        thisCart.dom.totalNumber.classList.remove(classNames.cart.illusion);
+      }, 500);
+      thisCart.dom.totalPriceTitle.classList.add(classNames.cart.illusion);
+      setTimeout(function() {
+        thisCart.dom.totalPriceTitle.classList.remove(classNames.cart.illusion);
+      }, 500);
+      thisCart.dom.totalPrice.classList.add(classNames.cart.illusion);
+      setTimeout(function() {
+        thisCart.dom.totalPrice.classList.remove(classNames.cart.illusion);
+      }, 500);
+
     }
 
     sendOrder() {
@@ -454,6 +469,7 @@
         products: []
       };
       console.log('payload', payload);
+
       for (let prod of thisCart.products) {
         payload.products.push(prod.getData());
       }

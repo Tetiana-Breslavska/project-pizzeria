@@ -1,7 +1,12 @@
 .header {
+  position:fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   padding: ($base-size * 5) 0;
   background: $color-dark;
   color: $color-light;
+  z-index: 100;
 
   &__wrapper {
     position: relative;

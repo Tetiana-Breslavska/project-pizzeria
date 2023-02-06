@@ -10,6 +10,7 @@
   font-size: $base-size;
   box-shadow: 0 0 $base-size rgba(0, 0, 0, 0.2);
   z-index: 9999;
+  
 
   &.active {
     .cart__content {
@@ -37,6 +38,9 @@
     color: $color-light;
     text-align: center;
     line-height: 28px;
+    // transition: opacity 0.5s;
+    // transition-duration: opacity 0.5s;
+    transition: all 1.5s;
   }
 
   &__total-price {
@@ -155,5 +159,27 @@
     }
 
   }
+
+  &_illusion {
+    opacity: 0.5;
+    transition:all;
+    transform: scale(1.2);
+    // animation: opacity-animate 1s ease-out;
+    
+  }
+
+    // @keyframes opacity-animate {
+    //   0% {
+    //     opacity: 0.5;
+  
+    //   }
+  
+    //   100% {
+    //     opacity: 1;
+    //     transform: scale(1.2);
+  
+    //   }
+    // }
+
 
 }
