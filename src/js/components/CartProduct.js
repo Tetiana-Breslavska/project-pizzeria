@@ -19,7 +19,7 @@ class CartProduct {
     const thisCartProduct = this;
     thisCartProduct.dom = {};
     thisCartProduct.dom.wrapper = element;
-    console.log(element);
+    // console.log(element);
     thisCartProduct.dom.amountWidget = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.amountWidget);
     thisCartProduct.dom.price = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.price);
     thisCartProduct.dom.edit = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.edit);
@@ -43,7 +43,7 @@ class CartProduct {
       detail: { cartProduct: thisCartProduct, },
     });
     thisCartProduct.dom.wrapper.dispatchEvent(event);
-    console.log('remove');
+    // console.log('remove');
   }
 
   initActions() {
@@ -67,7 +67,7 @@ class CartProduct {
       priceSingle: thisCartProduct.priceSingle,
       price: thisCartProduct.price,
     };
-    console.log(readyProductForServer);
+    // console.log(readyProductForServer);
     return readyProductForServer;
     
 

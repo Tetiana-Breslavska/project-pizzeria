@@ -9,15 +9,15 @@ class Cart {
     thisCart.products = [];
     thisCart.getElements(element);
     thisCart.initActions();
-    console.log('new Cart', thisCart);
+    // console.log('new Cart', thisCart);
   }
     
   getElements(element) {
     const thisCart = this;
     thisCart.dom = {};
     thisCart.dom.wrapper = element;
-    console.log(thisCart.dom.wrapper);
-    console.log(select.cart.toggleTrigger);
+    // console.log(thisCart.dom.wrapper);
+    // console.log(select.cart.toggleTrigger);
     thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger);
     thisCart.dom.productList = thisCart.dom.wrapper.querySelector(select.cart.productList);
     thisCart.dom.deliveryFee = document.querySelector( select.cart.deliveryFee);
@@ -32,7 +32,7 @@ class Cart {
     
   initActions() {
     const thisCart = this;
-    console.log(thisCart.dom.toggleTrigger);
+    // console.log(thisCart.dom.toggleTrigger);
     thisCart.dom.toggleTrigger.addEventListener('click', function (event) {
       event.preventDefault();
       thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
@@ -57,9 +57,9 @@ class Cart {
 
   remove(cartProduct){
     const thisCart = this;
-    console.log('remove', cartProduct);
-    console.log(thisCart);
-    console.log(thisCart.products);
+    // console.log('remove', cartProduct);
+    // console.log(thisCart);
+    // console.log(thisCart.products);
     for (let product of thisCart.products) {
       if (product === cartProduct) {
         const index = thisCart.products.indexOf(product);
@@ -69,22 +69,22 @@ class Cart {
       
     }
     thisCart.update();
-    console.log(cartProduct.dom.wrapper);
+    // console.log(cartProduct.dom.wrapper);
     cartProduct.dom.wrapper.remove();
   }
 
   add(menuProduct) {
     const thisCart = this;
-    console.log(thisCart);
-    console.log('adding product', menuProduct);
+    // console.log(thisCart);
+    // console.log('adding product', menuProduct);
     const generatedHTML = templates.cartProduct(menuProduct);
-    console.log(generatedHTML);
+    // console.log(generatedHTML);
     /* create element using utils.createElementFromHTML*/
     const generatedDOM = utils.createDOMFromHTML(generatedHTML);
     /* add element to menu*/
     thisCart.dom.productList.appendChild(generatedDOM);
     thisCart.products.push(new CartProduct(menuProduct, generatedDOM));
-    console.log('thisCart.products', thisCart.products);
+    // console.log('thisCart.products', thisCart.products);
     thisCart.update();
   }
 
@@ -134,7 +134,7 @@ class Cart {
       deliveryFee: settings.cart.defaultDeliveryFee,
       products: []
     };
-    console.log('payload', payload);
+    // console.log('payload', payload);
 
     for (let prod of thisCart.products) {
       payload.products.push(prod.getData());

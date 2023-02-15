@@ -41,7 +41,6 @@ const app = {
     /*add class "active" to matching pages, remove from non-matching */
     for(let page of thisApp.pages){
       page.classList.toggle(classNames.pages.active, page.id ===pageId);
-      console.log ('toggle page');
     }
     /*add class "active" to matching links, remove from non-matching */
     for(let link of thisApp.navLinks){
@@ -49,8 +48,6 @@ const app = {
         classNames.nav.active, 
         link.getAttribute('href') === '#' + pageId
       );
-      console.log ('toggle link');
-     
     }
 
   },
@@ -78,7 +75,7 @@ const app = {
         /* execute initMenu method*/
         thisApp.initMenu();
       });
-    console.log('thisApp.data', JSON.stringify(thisApp.data));
+    // console.log('thisApp.data', JSON.stringify(thisApp.data));
   },
 
   initCart: function () {
