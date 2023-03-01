@@ -229,14 +229,10 @@ class Booking{
         }
       }
       console.log(thisBooking.starters);
-            
     });
-
-
   }
 
   sendBooking() {
-    // event.preventDefault();
     const thisBooking = this;
     const url = settings.db.url + '/' + settings.db.booking;
     const payload = {
@@ -294,9 +290,6 @@ class Booking{
     thisBooking.dom.floorPlan.addEventListener('click', function (event){
       thisBooking.initTables(event);
     });
-    // thisBooking.dom.btnBookTable.onclick = function (evt) {
-    //   evt.preventDefault();
-    // };
 
     thisBooking.dom.bookingForm.addEventListener('submit', function (event) {
       event.preventDefault();
