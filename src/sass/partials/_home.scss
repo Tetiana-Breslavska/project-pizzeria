@@ -1,0 +1,160 @@
+
+
+  .home-wrapper {
+    margin: ($base-size * 3.5) auto;
+    padding: ($base-size * 6) ($base-size * 4);
+    background: $color-light;
+    border-bottom: 1px solid lighten($color-dark, 70%);
+    border-radius: $radius;
+    
+  }
+
+
+  .page-links{
+    display: flex;
+    text-align: center;
+    color: #fff;
+
+      .text-container {
+        position: absolute;
+        top: 30%;
+        left: 25%;
+      }
+    
+      a {
+        color: #fff;
+        text-transform: uppercase;
+        text-align: center;
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: 700;
+       
+      }
+
+     
+
+         
+  }
+
+
+  .link-to-order {
+    background-image: url(/images/assets/pizza-1.jpg);
+    width: 297px;
+    height: 125px;
+    border-radius: 5px;
+    position: relative;
+    margin-right: 10px;
+    background-position: center;
+    background-size: cover;
+
+    .link-descr{
+      font-size: 0;
+      transition: all 1s;
+    
+    }
+    
+  }
+
+  .link-to-order:hover{
+    .link-descr{
+      font-size: 12px;
+    
+    }
+
+  }
+
+  .link-to-booking {
+    background-image: url(/images/assets/pizza-2.jpg);
+    width: 297px;
+    height: 125px;
+    border-radius: 5px;
+    position: relative;
+    background-position: center;
+    background-size: cover;
+
+    .link-descr{
+      font-size: 0;
+      transition: all 1s;
+    }
+
+    
+  
+  }
+  .link-to-booking:hover{
+    .link-descr{
+      font-size: 12px;
+    }
+
+  }
+
+  .banner {
+    max-width: 604px;
+    height: 125px;
+    background-color: #ff6b6b;
+    border-radius: 5px;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 10px;
+    padding-top: 10px;
+  }
+
+
+  // gallery
+  .gallery {
+    margin-top: 10px;
+    padding-inline-start: 0%;
+    list-style: none;
+
+    .row{
+      display: flex;
+      max-width: 604px;
+    }
+
+    .image{
+      position: relative;
+      
+      img {
+        width: 194px;
+        height: 194px;
+        margin-right: 10px;
+        border-radius: 5px;
+        object-fit: cover;
+        opacity: 1;
+        }
+
+      .icons{
+        position: absolute;
+        top: 40%;
+        left: 40%;
+        opacity: -1;
+        font-size: 30px;
+        
+        transition: all 1s;
+
+          i{
+            color: #fff;
+            transition: all 1s;
+          }
+          i:hover{
+            color: #ff6b6b;
+            scale: 1.2;
+          }
+      }
+    }
+
+    .image:hover{
+      img{
+        opacity: 0.7;
+      }
+      .icons{
+        opacity: 1;
+        
+        }
+      }
+    }
+  
+
+  footer a{
+    color: #ff6b6b;
+  }

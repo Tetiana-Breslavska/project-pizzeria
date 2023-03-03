@@ -11,7 +11,7 @@ const app = {
     thisApp.pages = document.querySelector(select.containerOf.pages).children;
     thisApp.navLinks = document.querySelectorAll(select.nav.links);
     const idFromHash =  window.location.hash.replace('#/', '');
-    console.log (idFromHash);
+    console.log (thisApp.navLinks);
     let pageMatchingHash = thisApp.pages[0].id;
     for (let page of thisApp.pages){
       if (page.id ===idFromHash){
@@ -33,7 +33,6 @@ const app = {
         window.location.hash = '#/'+ id;
       });
     }
-
   },
  
   activatePage: function (pageId) {

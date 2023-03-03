@@ -9,8 +9,11 @@ export const select = {
     menu: '#product-list',
     cart: '#cart',
     pages: '#pages',
+    pageOrder:'#order',
+    pageBooking:'#booking',
+    pageHome:'#home',
     booking: '.booking-wrapper',
-    home: '.home-container',
+    home: '.home-wrapper',
   },
   all: {
     menuProducts: '#product-list > .product',
@@ -74,6 +77,10 @@ export const select = {
   },
   nav: {
     links: '.main-nav a',
+    
+    homeLinksWrapper: '.page-links',
+    homeLinkOrder:'[href="#order"]',
+    homeLinkBooking:'[href="#booking"]',
   },
   
 };
