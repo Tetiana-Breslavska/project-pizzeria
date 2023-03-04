@@ -14,7 +14,9 @@ export const select = {
     pageHome:'#home',
     booking: '.booking-wrapper',
     home: '.home-wrapper',
+    carousel:'.main-carousel',
   },
+  
   all: {
     menuProducts: '#product-list > .product',
     menuProductsActive: '#product-list > .product.active',
@@ -77,7 +79,7 @@ export const select = {
   },
   nav: {
     links: '.main-nav a',
-    
+
     homeLinksWrapper: '.page-links',
     homeLinkOrder:'[href="#order"]',
     homeLinkBooking:'[href="#booking"]',

@@ -52,7 +52,6 @@ class Cart {
       event.preventDefault();
       thisCart.sendOrder();
     });
-
   }
 
   remove(cartProduct){
@@ -66,7 +65,6 @@ class Cart {
         console.log(index);
         thisCart.products.splice(index, 1);
       }
-      
     }
     thisCart.update();
     // console.log(cartProduct.dom.wrapper);

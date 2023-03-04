@@ -34,7 +34,6 @@ class Booking{
         settings.db.repeatParam,
         endDateParam,
       ],
-
     };
     // console.log('getData params ', params);
 
@@ -70,20 +69,16 @@ class Booking{
         thisBooking.parseData(bookings, eventsCurrent, eventsRepeat);
       });
   }
-
   
   parseData(bookings, eventsCurrent, eventsRepeat){
     const thisBooking = this;
     thisBooking.booked = {};
-
     for (let item of bookings){
       thisBooking.makeBooked(item.date, item.hour, item.duration, item.table);
     }
     for (let item of eventsCurrent){
       thisBooking.makeBooked(item.date, item.hour, item.duration, item.table);
     }
-
-   
     const minDate = thisBooking.datePicker.minDate;
     const maxDate = thisBooking.datePicker.maxDate;
 
@@ -94,7 +89,6 @@ class Booking{
         }
       }
     }
-    
     // console.log('thisBooking.booked', thisBooking.booked);
     thisBooking.updateDOM();
   }
@@ -118,7 +112,6 @@ class Booking{
     thisBooking.date = thisBooking.datePicker.value;
     thisBooking.hour = utils.hourToNumber(thisBooking.hourPicker.value);
     let allAvailable = false;
-
     if(
       typeof thisBooking.booked[thisBooking.date] === 'undefined'
       ||
@@ -126,13 +119,11 @@ class Booking{
     ){
       allAvailable = true;
     }
-
     for (let table of thisBooking.dom.tables){
       let tableId = table.getAttribute(settings.booking.tableIdAttribute);
       if (!isNaN(tableId)){
         tableId = parseInt(tableId);
       }
-
       if(!allAvailable
         &&
         thisBooking.booked[thisBooking.date][thisBooking.hour].includes(tableId)
@@ -141,7 +132,6 @@ class Booking{
       }
       else {
         table.classList.remove(classNames.booking.tableBooked);
-
       }
     }
     thisBooking.unselectTables();
@@ -153,10 +143,8 @@ class Booking{
     thisBooking.dom={};
     thisBooking.dom.wrapper = element;
     thisBooking.dom.wrapper.innerHTML=generatedHTML;
-
     thisBooking.dom.peopleAmount = document.querySelector(select.booking.peopleAmount);
     thisBooking.dom.hoursAmount = document.querySelector(select.booking.hoursAmount);
-    
     thisBooking.dom.datePicker = document.querySelector(select.widgets.datePicker.wrapper);
     thisBooking.dom.hourPicker = document.querySelector(select.widgets.hourPicker.wrapper);
     thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
@@ -165,12 +153,8 @@ class Booking{
     thisBooking.dom.phone = thisBooking.dom.wrapper.querySelector(select.booking.phone);
     thisBooking.dom.starters = document.querySelector(select.booking.starters);
     thisBooking.dom.bookingForm = document.querySelector(select.booking.bookingForm);
-
     console.log(thisBooking.dom.btnBookTable);
-  
   }
-
-  
 
   initTables(event){
     const thisBooking = this;
@@ -195,7 +179,6 @@ class Booking{
     // console.log(thisBooking.date, typeof(thisBooking.date));
     // console.log(thisBooking.hour, typeof(thisBooking.hour));
     // console.log(thisBooking.peopleAmountWidget.correctValue, typeof(thisBooking.peopleAmountWidget.correctValue));
-    
   }
 
   unselectTables(){
@@ -205,7 +188,6 @@ class Booking{
       thisBooking.selectedTable = null;
     }
     // console.log(thisBooking.selectedTable);
-    
   }
 
   checkStarters(){
@@ -213,10 +195,8 @@ class Booking{
     thisBooking.dom.starters.addEventListener('click', function (event) {
       const checkboxObject = event.target;
       console.log(checkboxObject.getAttribute('value'));
-
       //   if (checkboxObject.matches('input[value="adults"]') || checkboxObject.matches('input[value="nonFiction"]'))
       if (checkboxObject.getAttribute('value') === 'water' || checkboxObject.getAttribute('value') ==='bread')
-
       {
         if (checkboxObject.checked === true && !thisBooking.starters.includes(checkboxObject.getAttribute('value'))){ 
           thisBooking.starters.push(checkboxObject.getAttribute('value'));
@@ -236,7 +216,6 @@ class Booking{
     const thisBooking = this;
     const url = settings.db.url + '/' + settings.db.booking;
     const payload = {
-
       date: thisBooking.date,
       hour: utils.numberToHour(thisBooking.hour),
       table: thisBooking.selectedTable,
@@ -245,11 +224,8 @@ class Booking{
       starters: thisBooking.starters,
       address: (thisBooking.dom.address).value,
       phone: (thisBooking.dom.phone).value,
-      
     };
     console.log('payload', payload);
-
-      
     // for (let starters of thisBooking.starters) {
     //   payload.starters.push(prod.getData());
     // }
@@ -279,27 +255,19 @@ class Booking{
     thisBooking.dom.peopleAmount.addEventListener('updated', function () {});
     thisBooking.hoursAmountWidget = new AmountWidget(thisBooking.dom.hoursAmount);
     thisBooking.dom.hoursAmount.addEventListener('updated', function () {});
-    
     thisBooking.datePicker = new DatePicker(thisBooking.dom.datePicker);
     thisBooking.hourPicker = new HourPicker(thisBooking.dom.hourPicker);
-    
     thisBooking.dom.wrapper.addEventListener('updated', function(){
       thisBooking.updateDOM();
     });
-
     thisBooking.dom.floorPlan.addEventListener('click', function (event){
       thisBooking.initTables(event);
     });
-
     thisBooking.dom.bookingForm.addEventListener('submit', function (event) {
       event.preventDefault();
       thisBooking.sendBooking();
     });
-  
-
   }
-
-
 }
 
 export default Booking;

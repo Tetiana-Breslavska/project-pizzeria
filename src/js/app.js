@@ -34,7 +34,7 @@ const app = {
       });
     }
   },
- 
+
   activatePage: function (pageId) {
     const thisApp = this;
     /*add class "active" to matching pages, remove from non-matching */
@@ -59,6 +59,7 @@ const app = {
       new Product(thisApp.data.products[productData].id, thisApp.data.products[productData]);
     }
   },
+  
   initData: function () {
     const thisApp = this;
     thisApp.data = {};

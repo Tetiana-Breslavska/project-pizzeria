@@ -24,8 +24,6 @@ class AmountWidget extends BaseWidget{
     thisWidget.dom.linkIncrease = thisWidget.dom.wrapper.querySelector(select.widgets.amount.linkIncrease);
   }
 
-
-
   isValid(value){
     return !isNaN(value)
     && value >= settings.amountWidget.defaultMin 
@@ -35,7 +33,6 @@ class AmountWidget extends BaseWidget{
   renderValue(){
     const thisWidget = this;
     thisWidget.dom.input.value = thisWidget.value;
-
   }
 
   initActions() {
